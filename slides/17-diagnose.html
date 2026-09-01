@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme-default="light">
+<head>
+<meta charset="UTF-8">
+<title>17 · 輸出怪怪的，先點名原因</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<link rel="stylesheet" href="../shared/layout.css">
+<style>
+  .diag { display: grid; grid-template-columns: 1.1fr 1.4fr 1.3fr; height: 100%; border-top: 1px solid var(--line); }
+  .h { font-family: Fraunces, serif; font-size: 22px; color: var(--accent); padding: 16px 22px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); }
+  .c { padding: 16px 22px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); font-size: 22px; line-height: 1.4; }
+  .c:nth-child(3n) { border-right: 0; }
+</style>
+</head>
+<body class="slide">
+  <div class="masthead">
+    <span>AI Fluency · Diagnose</span>
+    <span class="right">17 · Collisions</span>
+  </div>
+  <div class="intro">
+    <h1 class="font-display">先點名，再<span>對症</span></h1>
+    <p>大多數失敗是兩個屬性交織。指出是哪兩個，就知道修法。這就是辨別力的實作。</p>
+  </div>
+  <div class="stage">
+    <div class="diag">
+      <div class="h">你看到什麼</div>
+      <div class="h">多半是哪兩個在撞</div>
+      <div class="h">針對性修法</div>
+
+      <div class="c">課綱裡的假論文、假 URL、精確統計</div>
+      <div class="c">Next Token × Knowledge</div>
+      <div class="c">驗證特定細節；要求引文，找不到就撤回</div>
+
+      <div class="c">聊很久後，前面定的限制消失了</div>
+      <div class="c">Working Memory × Steerability</div>
+      <div class="c">重新提供上下文；關鍵規則放頭尾再講一次</div>
+
+      <div class="c">時數、分數、練習時間加總對不上</div>
+      <div class="c">Next Token × Steerability</div>
+      <div class="c">轉交計算或你自己加總；不要靠它心算</div>
+
+      <div class="c">它順著你的壞前提一直點頭</div>
+      <div class="c">微調指紋 × Steerability<br/><br/>（fine-tuning
+  fingerprint，微調留下的性格痕跡）
+  
+  </br>   </br> 常見四種：<br/>
+
+  • 阿諛奉承（sycophancy）：順著你的框架點頭<br/>
+  • 預設冗長（verbosity）：能寫三段就不寫一句<br/>
+  • 過度謹慎（over-caution）：沒事也先保留<br/>
+  • 信心校準鬆（loose confidence calibration）：講得很篤定，可靠度和語氣不成正比<br/>
+  </div>
+  
+  
+      <div class="c">明確邀請異議，而不是把語氣加得更硬</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span><strong>AI Fluency</strong> · 給資訊培訓師</span>
+    <span>17 / 22</span>
+  </div>
+  <script src="../shared/theme.js"></script>
+</body>
+</html>

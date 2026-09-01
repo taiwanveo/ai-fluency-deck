@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme-default="light">
+<head>
+<meta charset="UTF-8">
+<title>07 · 把一場內訓拆開</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<link rel="stylesheet" href="../shared/layout.css">
+<style>
+  .matrix { display: grid; grid-template-columns: 220px 1fr 1fr 1fr; height: 100%; border-top: 1px solid var(--line); }
+  .cell { padding: 18px 22px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); font-size: 22px; line-height: 1.4; }
+  .cell:nth-child(4n) { border-right: 0; }
+  .hd { font-family: Fraunces, serif; font-size: 24px; color: var(--accent); letter-spacing: 0.04em; }
+  .task { font-weight: 500; }
+</style>
+</head>
+<body class="slide">
+  <div class="masthead">
+    <span>AI Fluency · Delegation</span>
+    <span class="right">07 · Worked example </span>
+  </div>
+
+  <div class="intro">
+    <h1 class="font-display">把一場企業內訓<span>拆開</span></h1>
+    <p>與 AI 一同規劃課程內容。三個欄位：人／AI／共創。</p>
+  </div>
+  <div class="stage">
+    <div class="matrix">
+      <div class="cell hd">任務</div>
+      <div class="cell hd">人留下</div>
+      <div class="cell hd">可交給 AI</div>
+      <div class="cell hd">值得共創</div>
+
+      <div class="cell task">學習目標</div>
+      <div class="cell">這一班真正要帶走什麼，你定。</div>
+      <div class="cell">把草稿改寫成可觀察行為句。</div>
+      <div class="cell">對過學員程度與時間盒。</div>
+
+      <div class="cell task">活動設計</div>
+      <div class="cell">教室節奏、分組、收斂方式。</div>
+      <div class="cell">列出 6 個候選練習。</div>
+      <div class="cell">挑一個，改成「這一班」能做的版本。</div>
+
+      <div class="cell task">教材與例子</div>
+      <div class="cell">真實失敗案例、內部用語。</div>
+      <div class="cell">把長文壓成投影片要點。</div>
+      <div class="cell">檢查有沒有幻覺出的數據或出處。</div>
+
+      <div class="cell task">現場與成績</div>
+      <div class="cell">臨場判斷、評分、個別回饋。</div>
+      <div class="cell">課後 FAQ 草稿、延伸閱讀清單。</div>
+      <div class="cell">機器人可答行政；不可裁定通過與否。</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span><strong>AI Fluency</strong> · 給資訊培訓師</span>
+    <span>07 / 22</span>
+  </div>
+  <script src="../shared/theme.js"></script>
+</body>
+</html>
