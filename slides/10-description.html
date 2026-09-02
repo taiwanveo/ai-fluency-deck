@@ -5,51 +5,64 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#14110e" media="(prefers-color-scheme: dark)">
-<title>11 · Description 描述</title>
+<title>10 · Description 描述</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared/tokens.css">
 <link rel="stylesheet" href="../shared/layout.css">
+<style>
+  .stage { grid-template-rows: auto minmax(0, 1fr); }
+  .bays { height: auto; }
+  .panorama { margin-top: 18px; min-height: 0; }
+  .panorama img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+    border: 1px solid var(--line);
+    display: block;
+  }
+</style>
 </head>
 <body class="slide">
   <div class="masthead">
     <span>AI Fluency · Description</span>
-    <span class="right">11 · Three axes</span>
+    <span class="right">10 · Three axes</span>
   </div>
 
   <div class="intro">
     <h1 class="font-display">Description <span>描述</span></h1>
-    <p>不只是寫提示。是建立一個協作環境。AI 讀不到你的心思，也不是自動販賣機。</p>
+    <p>好的描述，不只定義答案，也定義合作方式。描述得越清楚，合作品質越好。</p>
   </div>
   <div class="stage">
     <div class="bays n3">
       <article class="bay">
         <div class="mark">Product</div>
         <div class="en">產出</div>
-        <div class="zh">你要什麼</div>
-        <p class="blurb">輸出、格式、受眾、風格、長度。先定義「完成」長什麼樣子。</p>
-        <p class="ex"><b>問句</b>給我一份 45 分鐘課綱，給現場培訓師，每段標時間盒。</p>
+        <div class="zh">你要什麼結果？</div>
+        <p class="blurb">定義完成長什麼樣子。輸出格式、對象、風格與成功標準。</p>
       </article>
       <article class="bay">
         <div class="mark">Process</div>
         <div class="en">過程</div>
-        <div class="zh">怎麼做</div>
-        <p class="blurb">方法、步驟、框架。怎麼處理，可能跟最終目標一樣重要。</p>
-        <p class="ex"><b>問句</b>先問我這一班的先備知識，再出三種活動讓我挑。</p>
+        <div class="zh">你希望用什麼方式完成？</div>
+        <p class="blurb">除了答案，也定義步驟、方法、分析框架與工作流程。</p>
       </article>
       <article class="bay">
         <div class="mark">Performance</div>
         <div class="en">表現</div>
-        <div class="zh">怎麼互動</div>
-        <p class="blurb">簡潔還是詳細、挑戰還是支持。指定協作態度，而不只指定答案。</p>
-        <p class="ex"><b>問句</b>當我的備課夥伴：先反問，不要一次寫完整堂課。</p>
+        <div class="zh">你希望怎麼合作？</div>
+        <p class="blurb">定義 AI 的角色、態度與互動方式，不要只指定答案。簡潔還是詳細？挑戰還是支持？顧問還是助理？</p>
       </article>
     </div>
+    <figure class="panorama">
+      <img src="../assets/three-axes-desk.png" alt="連續工作桌插畫：左側是可檢視的完成原型，中間是草稿與修正歷程，右側是工作者與抽象 AI 介面共同檢視作品">
+    </figure>
   </div>
   <div class="page-footer">
     <span><strong>AI Fluency</strong> · 給資訊培訓師</span>
-    <span>11 / 22</span>
+    <span>10 / 17</span>
   </div>
   <script src="../shared/theme.js"></script>
 </body>

@@ -1,6 +1,6 @@
 # AI Fluency Deck · Studio Dual grammar
 
-這份檔鎖定 Studio Dual grammar。22 頁已齊。45 分鐘現場可跳 07、16、20（頁上有標記）。
+這份檔鎖定 Studio Dual grammar。17 頁已齊（已刪：拆一場內訓、課綱走完 4D、檢查清單、常見誤區、培訓師責任線）。
 
 ## 產線
 

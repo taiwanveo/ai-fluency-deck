@@ -14,6 +14,47 @@
 <style>
   .bays.n3 .mark { font-size: 46px; }
   .claim { margin-top: 14px; font-size: 30px; line-height: 1.4; font-weight: 500; color: var(--ink); }
+
+  .extra {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  .gigo-phrase {
+    font-family: Fraunces, serif;
+    font-style: italic;
+    font-size: 30px;
+    line-height: 1.25;
+    color: var(--accent);
+  }
+  .gigo-zh { margin-top: 4px; font-size: 22px; color: var(--muted); }
+  .gigo-img {
+    margin-top: 14px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: 1px solid var(--line);
+    display: block;
+  }
+
+  .check {
+    list-style: none;
+    display: grid;
+    gap: 14px;
+    font-size: 26px;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  .check li { display: flex; gap: 14px; align-items: center; }
+  .check li::before {
+    content: "";
+    flex: 0 0 auto;
+    width: 9px;
+    height: 9px;
+    background: var(--accent);
+    transform: rotate(45deg);
+  }
 </style>
 </head>
 <body class="slide">
@@ -32,13 +73,21 @@
         <div class="zh">委派</div>
         <div class="claim">知人善任，正確有效分派任務</div>
         <p class="blurb">知道工作任務可以給人做、讓AI 做、一起做，並能夠說出為什麼這樣分工。</p>
+        <ul class="extra check">
+          <li>把適合的事情，交給適合的人完成</li>
+        </ul>
       </article>
       <article class="bay">
         <div class="mark">02</div>
         <div class="en">Description</div>
         <div class="zh">描述</div>
         <div class="claim">寫出讓 AI 產出更正確、更高效的提示詞</div>
-        <p class="blurb">把一句模糊指令，改成同時含產出、作法、協作態度。</p>
+        <p class="blurb">把一句模糊指令，改成同時含產出、作法、協作態度，並提供完成任務所需的完整上下文資訊。</p>
+        <div class="extra">
+          <div class="gigo-phrase">Garbage In, Garbage Out</div>
+          <div class="gigo-zh">垃圾輸入，垃圾輸出</div>
+          <img class="gigo-img" src="../assets/gigo.png" alt="插畫：雜亂的紙團倒進漏斗機器，出來的仍是雜亂的紙團——垃圾輸入，垃圾輸出">
+        </div>
       </article>
       <article class="bay">
         <div class="mark">03</div>
@@ -46,12 +95,17 @@
         <div class="zh">辨別</div>
         <div class="claim">有能力判斷 AI 產出的品質與正確與否</div>
         <p class="blurb">能指出AI出問題的點，並知道原因、選對修正方法。</p>
+        <ul class="extra check">
+          <li>是否符合需求？</li>
+          <li>有沒有幻覺（Hallucination）？</li>
+          <li>邏輯是否合理？</li>
+        </ul>
       </article>
     </div>
   </div>
   <div class="page-footer">
     <span><strong>AI Fluency</strong> · 給資訊培訓師</span>
-    <span>02 / 22</span>
+    <span>02 / 17</span>
   </div>
   <script src="../shared/theme.js"></script>
 </body>

@@ -11,6 +11,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared/tokens.css">
 <link rel="stylesheet" href="../shared/layout.css">
+<style>
+  .stage { grid-template-rows: auto minmax(0, 1fr); }
+  .bays { height: auto; }
+  .panorama { margin-top: 18px; min-height: 0; }
+  .panorama img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+    border: 1px solid var(--line);
+    display: block;
+  }
+</style>
 </head>
 <body class="slide">
   <div class="masthead">
@@ -19,34 +32,40 @@
   </div>
   
   <div class="intro">
-    <h1 class="font-display">三種關係，不是三種<span>工具</span></h1>
-    <p>同一個專案或工作任務中裡經常會混用。<br/></p>
+    <h1 class="font-display">三種協作關係，而不是三種<span>工具</span></h1>
+    <p>同一個專案或工作任務中裡經常會切換運用。<br/></p>
   </div>
   <div class="stage">
     <div class="bays n3">
       <article class="bay">
         <div class="mark">I</div>
         <div class="en">Automation</div>
-        <div class="zh">自動化</div>
-        <p class="blurb">人下指令，AI 執行既定任務。<br/>適合重複、耗時、格式清楚的工作。</p>
+        <div class="zh">自動化</div><div class="tag">人決定，AI 執行</div>
+        <p class="blurb">人定義任務，AI 依指令完成。<br/><br/>適合規則清楚、重複、耗時或資料量大的工作。</p>
+		
       </article>
       <article class="bay">
         <div class="mark">II</div>
         <div class="en">Augmentation</div>
-        <div class="zh">增強</div>
-        <p class="blurb">人將 AI 當成思考夥伴，共同完成任務。<br/>創意與判斷仍在你這邊。</p>
+        <div class="zh">增強協作</div><div class="tag">人與 AI 一起完成</div>
+        <p class="blurb">人與 AI 共同思考、來回修正，一起完成任務。<br/><br/>適合需要探索、創意、分析或判斷的工作。</p>
+		
       </article>
       <article class="bay">
         <div class="mark">III</div>
         <div class="en">Agency</div>
-        <div class="zh">代理</div>
-        <p class="blurb">人設定框架，AI代表人，自主完成任務。<br/>最能真正利用AI獨特能力的模式。</p>
+        <div class="zh">代理執行</div><div class="tag">人治理，AI 代為執行</div>
+        <p class="blurb">人設定目標、邊界與規則，AI 在授權範圍內持續執行。<br/><br/>適合流程可監控、例外可處理、責任已界定的工作。</p>
+		
       </article>
     </div>
+    <figure class="panorama">
+      <img src="../assets/three-modes.png" alt="三聯插畫：左側自動化——講師定義流程、AI 批次處理文件；中間增強協作——講師與 AI 在白板前共同發想課綱；右側代理執行——多個 AI 代理在儀表板監控下自主作業">
+    </figure>
   </div>
   <div class="page-footer">
     <span><strong>AI Fluency</strong> · 給資訊培訓師</span>
-    <span>04 / 22</span>
+    <span>04 / 17</span>
   </div>
   <script src="../shared/theme.js"></script>
 </body>
