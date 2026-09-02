@@ -2,6 +2,9 @@
 <html lang="zh-Hant" data-theme-default="light">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14110e" media="(prefers-color-scheme: dark)">
 <title>17 · 輸出怪怪的，先點名原因</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,9 +13,56 @@
 <link rel="stylesheet" href="../shared/layout.css">
 <style>
   .diag { display: grid; grid-template-columns: 1.1fr 1.4fr 1.3fr; height: 100%; border-top: 1px solid var(--line); }
-  .h { font-family: Fraunces, serif; font-size: 22px; color: var(--accent); padding: 16px 22px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); }
-  .c { padding: 16px 22px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); font-size: 22px; line-height: 1.4; }
+  .h { font-family: Fraunces, serif; font-size: 26px; color: var(--accent); padding: 16px 22px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); }
+  .c { padding: 16px 22px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); font-size: 26px; line-height: 1.4; }
   .c:nth-child(3n) { border-right: 0; }
+
+  /* 微調指紋：三種開啟方式 —— 滑鼠懸停、鍵盤 focus、點按/觸控切換 */
+  .note { position: relative; display: inline-block; }
+  .note-trigger {
+    font: inherit; color: inherit; background: none; border: 0; padding: 0;
+    border-bottom: 1px dashed var(--accent);
+    cursor: pointer; touch-action: manipulation;
+  }
+  .note-trigger:hover,
+  .note-trigger:focus-visible,
+  .note.is-open .note-trigger { color: var(--accent); }
+  .note-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .note-hint {
+    display: inline-block; margin-left: 10px; vertical-align: 2px;
+    font-size: 16px; letter-spacing: 0.14em; color: var(--faint);
+  }
+  .note-body {
+    position: absolute; left: 0; bottom: calc(100% + 16px); width: 680px; z-index: 10;
+    padding: 22px 26px; text-align: left;
+    background: var(--bg-elev); border: 1px solid var(--line);
+    box-shadow: 0 20px 48px var(--shadow);
+    font-size: 24px; line-height: 1.5; color: var(--ink);
+    opacity: 0; transform: translateY(6px); pointer-events: none;
+    transition: opacity 200ms cubic-bezier(.2,.7,.2,1), transform 200ms cubic-bezier(.2,.7,.2,1);
+  }
+  /* 點按切換：明確狀態，觸控裝置唯一能用的路徑 */
+  .note.is-open > .note-body { opacity: 1; transform: none; pointer-events: auto; }
+  /* 鍵盤走標準 disclosure：Enter/Space 切換 is-open。
+     不用 :focus-visible 直接展開 —— Escape 關閉後要把焦點還給按鈕，
+     那次 focus 會讓 :focus-visible 重新匹配而立刻又展開。 */
+  /* 懸停僅限真正的滑鼠，避免觸控裝置的模擬 hover 與切換狀態打架 */
+  @media (hover: hover) and (pointer: fine) {
+    .note:hover > .note-body { opacity: 1; transform: none; }
+  }
+  .note-body b {
+    display: block; margin-bottom: 12px; color: var(--accent); font-weight: 500;
+    font-size: 17px; letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .note-body .ln { display: block; margin-top: 9px; }
+  .note-body .ln em { font-style: normal; color: var(--studio); }
+  @media (prefers-reduced-motion: reduce) {
+    .note-body { transition-duration: 80ms; transform: none; }
+  }
+  @media print {
+    .note-body { position: static; width: auto; opacity: 1; transform: none;
+                 box-shadow: none; margin-top: 12px; }
+  }
 </style>
 </head>
 <body class="slide">
@@ -43,18 +93,19 @@
       <div class="c">轉交計算或你自己加總；不要靠它心算</div>
 
       <div class="c">它順著你的壞前提一直點頭</div>
-      <div class="c">微調指紋 × Steerability<br/><br/>（fine-tuning
-  fingerprint，微調留下的性格痕跡）
-  
-  </br>   </br> 常見四種：<br/>
+      <div class="c">
+        <span class="note">
+          <button class="note-trigger" type="button" aria-expanded="false" aria-controls="fingerprint-note">微調指紋</button><span class="note-hint" aria-hidden="true">點按</span>
+          <span class="note-body" id="fingerprint-note" role="note">
+            <b>Fine-tuning fingerprint · 微調留下的性格痕跡</b>
+            <span class="ln">阿諛奉承 <em>sycophancy</em>：順著你的框架點頭</span>
+            <span class="ln">預設冗長 <em>verbosity</em>：能寫三段就不寫一句</span>
+            <span class="ln">過度謹慎 <em>over-caution</em>：沒事也先保留</span>
+            <span class="ln">信心校準鬆 <em>loose confidence calibration</em>：講得篤定，可靠度和語氣不成正比</span>
+          </span>
+        </span> × Steerability
+      </div>
 
-  • 阿諛奉承（sycophancy）：順著你的框架點頭<br/>
-  • 預設冗長（verbosity）：能寫三段就不寫一句<br/>
-  • 過度謹慎（over-caution）：沒事也先保留<br/>
-  • 信心校準鬆（loose confidence calibration）：講得很篤定，可靠度和語氣不成正比<br/>
-  </div>
-  
-  
       <div class="c">明確邀請異議，而不是把語氣加得更硬</div>
     </div>
   </div>
@@ -63,5 +114,28 @@
     <span>17 / 22</span>
   </div>
   <script src="../shared/theme.js"></script>
+  <script>
+  (function () {
+    var note = document.querySelector('.note');
+    var btn = note.querySelector('.note-trigger');
+    function setOpen(open) {
+      note.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', String(open));
+    }
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setOpen(!note.classList.contains('is-open'));
+    });
+    document.addEventListener('click', function (e) {
+      if (!note.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && note.classList.contains('is-open')) {
+        setOpen(false);
+        btn.focus();
+      }
+    });
+  })();
+  </script>
 </body>
 </html>

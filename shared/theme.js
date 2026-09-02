@@ -19,11 +19,16 @@
     if (btn) btn.textContent = theme === "dark" ? "淺色" : "深色";
   }
 
-  function apply(theme, broadcast) {
+  // persist=false：只上色，不落地。用於初次載入套用 data-theme-default，
+  // 否則封面的 dark 會被寫進 localStorage，把後面所有淺色內頁一起染深。
+  function apply(theme, broadcast, persist) {
     paint(theme);
-    try { localStorage.setItem(KEY, theme); } catch (_) {}
+    if (persist !== false) {
+      try { localStorage.setItem(KEY, theme); } catch (_) {}
+    }
     if (broadcast && window.parent && window.parent !== window) {
-      window.parent.postMessage({ type: "ai-fluency-theme", theme: theme }, "*");
+      var target = (location.origin && location.origin !== "null") ? location.origin : "*";
+      window.parent.postMessage({ type: "ai-fluency-theme", theme: theme }, target);
     }
   }
 
@@ -38,9 +43,15 @@
     }
   };
 
-  apply(readStored() || fallback(), false);
+  var stored = readStored();
+  if (stored) {
+    apply(stored, false);          // 使用者明確選過 → 沿用
+  } else {
+    paint(fallback());             // 沒選過 → 用本頁的 data-theme-default，不落地
+  }
 
   window.addEventListener("message", function (e) {
+    if (location.origin && location.origin !== "null" && e.origin !== location.origin) return;
     if (!e.data || e.data.type !== "ai-fluency-theme") return;
     if (e.data.theme !== "light" && e.data.theme !== "dark") return;
     apply(e.data.theme, false);

@@ -12,6 +12,7 @@ html[data-theme="light"] {
   --shadow: rgba(28, 25, 21, 0.08);
   --toggle-bg: rgba(255, 250, 242, 0.88);
   --toggle-ink: #1c1915;
+  color-scheme: light;
 }
 
 html[data-theme="dark"] {
@@ -27,6 +28,7 @@ html[data-theme="dark"] {
   --shadow: rgba(0, 0, 0, 0.35);
   --toggle-bg: rgba(30, 26, 22, 0.88);
   --toggle-ink: #f2ebe1;
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -51,6 +53,7 @@ body {
 }
 
 .theme-toggle {
+  touch-action: manipulation;
   position: absolute;
   top: 36px;
   right: 48px;
@@ -70,6 +73,11 @@ body {
   color: var(--accent);
 }
 
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .page-footer {
   position: absolute;
   left: 64px;
@@ -81,6 +89,7 @@ body {
   font-size: 16px;
   letter-spacing: 0.06em;
   color: var(--faint);
+  font-variant-numeric: tabular-nums;
 }
 
 .page-footer strong {

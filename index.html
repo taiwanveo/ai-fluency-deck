@@ -2,6 +2,9 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#efece4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
 <title>AI Fluency · 框架與基礎</title>
 <!--
   deck_index.html — 多文件 slide deck 拼接器 · 双概览模式
@@ -18,28 +21,28 @@
 -->
 <script>
   window.DECK_MANIFEST = [
-    { file: "slides/01-cover.html", label: "封面" },
-    { file: "slides/02-outcomes.html", label: "學習成果" },
-    { file: "slides/03-fluency-not-prompts.html", label: "流暢度定義" },
-    { file: "slides/04-three-modes.html", label: "三種模式" },
-    { file: "slides/05-4d-framework.html", label: "4D 框架" },
-    { file: "slides/06-delegation.html", label: "委派" },
-    { file: "slides/07-split-workshop.html", label: "拆一場內訓" },
-    { file: "slides/08-four-properties.html", label: "四個 continuum" },
-    { file: "slides/09-sounds-true.html", label: "虛構與特定性" },
-    { file: "slides/10-instructions-drift.html", label: "指令為什麼漂" },
-    { file: "slides/11-description.html", label: "描述" },
-    { file: "slides/12-bad-vs-good.html", label: "壞寫法／好寫法" },
-    { file: "slides/13-discernment.html", label: "辨別" },
-    { file: "slides/14-loop.html", label: "描述－辨別循環" },
-    { file: "slides/15-diligence.html", label: "審慎" },
-    { file: "slides/16-trainer-responsibility.html", label: "培訓師責任" },
-    { file: "slides/17-diagnose.html", label: "對症診斷" },
-    { file: "slides/18-walkthrough.html", label: "課綱走完 4D" },
-    { file: "slides/19-checklist.html", label: "檢查清單" },
-    { file: "slides/20-antipatterns.html", label: "常見誤區" },
-    { file: "slides/21-license.html", label: "授權與延伸" },
-    { file: "slides/22-qa.html", label: "Q&A" }
+    { file: "slides/01-cover.html", thumb: "assets/thumbs/01-cover.jpg", label: "封面" },
+    { file: "slides/02-outcomes.html", thumb: "assets/thumbs/02-outcomes.jpg", label: "學習成果" },
+    { file: "slides/03-fluency-not-prompts.html", thumb: "assets/thumbs/03-fluency-not-prompts.jpg", label: "流暢度定義" },
+    { file: "slides/04-three-modes.html", thumb: "assets/thumbs/04-three-modes.jpg", label: "三種模式" },
+    { file: "slides/05-4d-framework.html", thumb: "assets/thumbs/05-4d-framework.jpg", label: "4D 框架" },
+    { file: "slides/06-delegation.html", thumb: "assets/thumbs/06-delegation.jpg", label: "委派" },
+    { file: "slides/07-split-workshop.html", thumb: "assets/thumbs/07-split-workshop.jpg", label: "拆一場內訓" },
+    { file: "slides/08-four-properties.html", thumb: "assets/thumbs/08-four-properties.jpg", label: "四個 continuum" },
+    { file: "slides/09-sounds-true.html", thumb: "assets/thumbs/09-sounds-true.jpg", label: "虛構與特定性" },
+    { file: "slides/10-instructions-drift.html", thumb: "assets/thumbs/10-instructions-drift.jpg", label: "指令為什麼漂" },
+    { file: "slides/11-description.html", thumb: "assets/thumbs/11-description.jpg", label: "描述" },
+    { file: "slides/12-bad-vs-good.html", thumb: "assets/thumbs/12-bad-vs-good.jpg", label: "壞寫法／好寫法" },
+    { file: "slides/13-discernment.html", thumb: "assets/thumbs/13-discernment.jpg", label: "辨別" },
+    { file: "slides/14-loop.html", thumb: "assets/thumbs/14-loop.jpg", label: "描述－辨別循環" },
+    { file: "slides/15-diligence.html", thumb: "assets/thumbs/15-diligence.jpg", label: "審慎" },
+    { file: "slides/16-trainer-responsibility.html", thumb: "assets/thumbs/16-trainer-responsibility.jpg", label: "培訓師責任" },
+    { file: "slides/17-diagnose.html", thumb: "assets/thumbs/17-diagnose.jpg", label: "對症診斷" },
+    { file: "slides/18-walkthrough.html", thumb: "assets/thumbs/18-walkthrough.jpg", label: "課綱走完 4D" },
+    { file: "slides/19-checklist.html", thumb: "assets/thumbs/19-checklist.jpg", label: "檢查清單" },
+    { file: "slides/20-antipatterns.html", thumb: "assets/thumbs/20-antipatterns.jpg", label: "常見誤區" },
+    { file: "slides/21-license.html", thumb: "assets/thumbs/21-license.jpg", label: "授權與延伸" },
+    { file: "slides/22-qa.html", thumb: "assets/thumbs/22-qa.jpg", label: "Q&A" }
   ];
   window.DECK_WIDTH = 1920;
   window.DECK_HEIGHT = 1080;
@@ -50,7 +53,10 @@
 
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { color-scheme: dark; }
   html, body { height: 100%; overflow: hidden; font-family: -apple-system, "PingFang SC", sans-serif; background: #0a0a0a; }
+  button { font-family: inherit; touch-action: manipulation; }
+  :where(button, [tabindex]):focus-visible { outline: 2px solid #e07a52; outline-offset: 3px; }
 
   .overview { position: fixed; inset: 0; }
   body[data-mode="present"] .overview { display: none; }
@@ -69,15 +75,22 @@
   .wall-wrap { }
   body[data-grid="fit"]    .wall-wrap { transform: translateY(-3vh); }
   .wall { display: grid; gap: 20px; transform-origin: center center; margin: 0 auto; }  /* 不用 preserve-3d：整墙作单个倾斜平面，命中测试可靠 */
+  .card { display: block; width: 100%; padding: 0; border: 0; font: inherit; color: inherit; content-visibility: auto; contain-intrinsic-size: 300px 169px; }
+  /* 陰影用 ::after 的 opacity 過渡，避免動畫 box-shadow（非合成器友善） */
+  .card::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+    opacity: 0; transition: opacity .28s cubic-bezier(.2,.7,.2,1);
+  }
   #ov-grid .card {
     position: relative; aspect-ratio: 16/9; border-radius: 9px; overflow: hidden; background: #fff; cursor: pointer;
     box-shadow: 0 16px 34px rgba(40,34,24,0.20), 0 3px 10px rgba(40,34,24,0.12);
-    transition: transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s;
+    transition: transform .28s cubic-bezier(.2,.7,.2,1);
   }
-  #ov-grid .card:hover {
-    transform: scale(1.18);
-    box-shadow: 0 48px 92px rgba(40,34,24,0.36), 0 14px 30px rgba(40,34,24,0.22); z-index: 20;
-  }
+  #ov-grid .card::after { box-shadow: 0 48px 92px rgba(40,34,24,0.36), 0 14px 30px rgba(40,34,24,0.22); }
+  #ov-grid .card:hover,
+  #ov-grid .card:focus-visible { transform: scale(1.18); z-index: 20; }
+  #ov-grid .card:hover::after,
+  #ov-grid .card:focus-visible::after { opacity: 1; }
 
   /* ════════ 模式 2 · 无限画廊 ════════ */
   #ov-gallery { overflow: hidden; perspective: 2200px; perspective-origin: 50% 42%;
@@ -90,15 +103,28 @@
   #ov-gallery .card {
     position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 8px; overflow: hidden; background: #fff; cursor: pointer;
     box-shadow: 0 14px 30px rgba(0,0,0,0.42), 0 3px 9px rgba(0,0,0,0.3);
-    transition: transform .34s cubic-bezier(.2,.7,.2,1), box-shadow .34s; transform-style: preserve-3d; will-change: transform;
+    transition: transform .34s cubic-bezier(.2,.7,.2,1); transform-style: preserve-3d; will-change: transform;
   }
-  #ov-gallery .card:hover {
+  #ov-gallery .card::after { box-shadow: 0 30px 64px rgba(0,0,0,0.55), 0 8px 20px rgba(0,0,0,0.4); }
+  #ov-gallery .card:hover,
+  #ov-gallery .card:focus-visible {
     transform: translateZ(60px) rotateX(calc(var(--rx,18)*-1deg)) rotateZ(calc(var(--rz,9)*1deg)) scale(1.06);
-    box-shadow: 0 30px 64px rgba(0,0,0,0.55), 0 8px 20px rgba(0,0,0,0.4); z-index: 30;
+    z-index: 30;
   }
+  #ov-gallery .card:hover::after,
+  #ov-gallery .card:focus-visible::after { opacity: 1; }
   .vignette { position: fixed; inset: 0; pointer-events: none; z-index: 20; box-shadow: inset 0 0 240px 70px rgba(8,6,3,0.62); }
   @keyframes drift { from { transform: translate3d(0,0,0); } to { transform: translate3d(calc(var(--dx)*-1), calc(var(--dy)*-1), 0); } }
   @keyframes breathe { 0%,100% { transform: scale(1.0); } 50% { transform: scale(1.045); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .drift-layer, .breathe { animation: none; }
+    .card, .card::after, .start-btn, .nav-hint, #ov-gallery .card .num { transition-duration: .08s; }
+    #ov-grid .card:hover, #ov-grid .card:focus-visible { transform: scale(1.06); }
+  }
+  @media print {
+    .drift-layer, .breathe { animation: none !important; }
+  }
 
   /* 卡片通用内容 */
   .card .thumb { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; transform-origin: top left; pointer-events: none; }
@@ -106,16 +132,25 @@
   .card .thumb-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
   .card .num { position: absolute; bottom: 6px; left: 7px; background: rgba(16,12,7,0.76); color: #fff; font-size: 11px; line-height: 1; padding: 4px 7px; border-radius: 5px; font-variant-numeric: tabular-nums; letter-spacing: 0.03em; z-index: 3; pointer-events: none; max-width: 90%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   #ov-gallery .card .num { opacity: 0; transition: opacity .25s; }
-  #ov-gallery .card:hover .num { opacity: 1; }
+  #ov-gallery .card:hover .num,
+  #ov-gallery .card:focus-visible .num { opacity: 1; }
 
   .overview-title { position: fixed; top: 24px; left: 0; right: 0; text-align: center; font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; z-index: 40; pointer-events: none; }
   body[data-ov="grid"]    .overview-title { color: #5a5346; opacity: 0.66; }
   body[data-ov="gallery"] .overview-title { color: rgba(244,238,224,0.7); text-shadow: 0 2px 12px rgba(0,0,0,0.6); }
 
-  .start-btn { position: fixed; bottom: 26px; right: 26px; border: 0; padding: 13px 24px; border-radius: 999px; font-size: 15px; font-family: inherit; letter-spacing: 0.04em; cursor: pointer; z-index: 200; transition: transform .18s, box-shadow .18s; }
+  .start-btn { position: fixed; bottom: 26px; right: 26px; border: 0; padding: 13px 24px; border-radius: 999px; font-size: 15px; font-family: inherit; letter-spacing: 0.04em; cursor: pointer; z-index: 200; transition: transform .18s cubic-bezier(.2,.7,.2,1); }
   body[data-ov="grid"]    .start-btn { background: #1a1712; color: #fff; box-shadow: 0 8px 28px rgba(40,34,24,0.28); }
   body[data-ov="gallery"] .start-btn { background: #f4eee0; color: #1a1712; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
   .start-btn:hover { transform: translateY(-2px); }
+  .start-btn:active { transform: scale(.97); }
+
+  /* 畫廊自動漂移的暫停鍵：滑鼠懸停暫停之外，給鍵盤與觸控一個等效控制 */
+  .motion-btn { position: fixed; bottom: 26px; left: 26px; z-index: 200; border: 0; padding: 11px 18px; border-radius: 999px;
+    font-size: 13px; cursor: pointer; background: rgba(244,238,224,0.92); color: #1a1712; }
+  body[data-ov="grid"] .motion-btn, body[data-mode="present"] .motion-btn { display: none; }
+  body[data-motion="paused"] .drift-layer,
+  body[data-motion="paused"] .breathe { animation-play-state: paused; }
 
   /* ════════ 演示模式 ════════ */
   #stage { position: fixed; top: 50%; left: 50%; transform-origin: top left; will-change: transform; background: #fff; box-shadow: 0 10px 60px rgba(0,0,0,0.4); }
@@ -124,7 +159,7 @@
   .counter .label { color: rgba(255,255,255,0.7); margin-left: 8px; }
   .overview-btn { position: fixed; top: 20px; left: 20px; background: rgba(0,0,0,0.55); color: rgba(255,255,255,0.85); border: 0; padding: 7px 14px; border-radius: 999px; font-size: 13px; font-family: inherit; cursor: pointer; z-index: 100; opacity: 0.6; }
   .overview-btn:hover { opacity: 1; }
-  .nav-zone { position: fixed; top: 0; bottom: 0; width: 15%; cursor: pointer; z-index: 50; }
+  .nav-zone { position: fixed; top: 0; bottom: 0; width: 15%; cursor: pointer; z-index: 50; border: 0; background: transparent; padding: 0; }
   .nav-zone.left { left: 0; } .nav-zone.right { right: 0; }
   .nav-hint { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 999px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); display: flex; align-items: center; justify-content: center; font-size: 22px; opacity: 0; transition: opacity .2s; }
   .nav-zone.left .nav-hint { left: 20px; } .nav-zone.right .nav-hint { right: 20px; }
@@ -161,15 +196,16 @@
   <div class="overview-title">Infinite Gallery · 懸停暫停 · 點擊任一頁進入演示</div>
 </div>
 
-<button class="start-btn" id="startBtn">▶ 開始演示</button>
+<button class="start-btn" id="startBtn" type="button">▶ 開始演示</button>
+<button class="motion-btn" id="motionBtn" type="button" aria-pressed="false">⏸ 暫停背景動態</button>
 
 <div id="present-ui">
-  <div id="stage"><iframe id="frame" src="about:blank"></iframe></div>
+  <div id="stage"><iframe id="frame" src="about:blank" title="投影片內容"></iframe></div>
   <button class="overview-btn" id="overviewBtn">⊞ 概覽</button>
   <button id="themeBtn" type="button">淺／深</button>
-  <div class="nav-zone left"  id="navL"><div class="nav-hint">‹</div></div>
-  <div class="nav-zone right" id="navR"><div class="nav-hint">›</div></div>
-  <div class="counter" id="counter">1 / 1</div>
+  <button class="nav-zone left"  id="navL" type="button" aria-label="上一頁"><span class="nav-hint" aria-hidden="true">‹</span></button>
+  <button class="nav-zone right" id="navR" type="button" aria-label="下一頁"><span class="nav-hint" aria-hidden="true">›</span></button>
+  <div class="counter" id="counter" role="status" aria-live="polite">1 / 1</div>
 </div>
 
 <div class="print-stack" id="printStack" style="display:none;"></div>
@@ -208,13 +244,20 @@
 
   /* ─ 媒体（缩略图优先，否则 iframe） ─ */
   function makeCard(idx, useScale, useImg) {
-    const card = document.createElement('div');
-    card.className = 'card'; card.dataset.idx = idx;
     const item = deck[idx];
+    const label = (idx + 1) + (item.label ? ' · ' + item.label : '');
+    // <button> 而非 <div>：可 Tab 聚焦、Enter/Space 觸發，不需自訂鍵盤處理
+    const card = document.createElement('button');
+    card.className = 'card'; card.dataset.idx = idx;
+    card.type = 'button';
+    card.setAttribute('aria-label', '前往第 ' + label);
     if (useImg && item.thumb) {
       // 仅画廊用：预渲染缩略图，扛无限平铺的性能
       const im = document.createElement('img');
       im.className = 'thumb-img'; im.src = item.thumb; im.decoding = 'async';
+      im.width = W; im.height = H;            // 明確尺寸，避免 CLS
+      im.alt = '';                            // 卡片本身已有 aria-label，縮圖為裝飾
+      im.loading = 'lazy';
       card.appendChild(im);
     } else {
       // 网格默认用：真实 HTML 子页面（清晰、所见即所得）
@@ -223,11 +266,14 @@
       if (useScale != null) thumb.style.transform = 'scale(' + useScale + ')';
       const ifr = document.createElement('iframe');
       ifr.src = item.file; ifr.setAttribute('scrolling', 'no');
+      ifr.title = label;
+      ifr.setAttribute('tabindex', '-1');     // iframe 內容不搶 Tab 焦點
+      ifr.setAttribute('aria-hidden', 'true');
       thumb.appendChild(ifr); card.appendChild(thumb);
     }
     const num = document.createElement('div');
     num.className = 'num';
-    num.textContent = (idx + 1) + (item.label ? ' · ' + item.label : '');
+    num.textContent = label;
     card.appendChild(num);
     card.addEventListener('click', () => { current = idx; setMode('present'); });
     return card;
@@ -356,6 +402,19 @@
   document.getElementById('navL').addEventListener('click', prev);
   document.getElementById('navR').addEventListener('click', next);
   document.getElementById('startBtn').addEventListener('click', () => setMode('present'));
+  const motionBtn = document.getElementById('motionBtn');
+  motionBtn.addEventListener('click', () => {
+    const paused = document.body.getAttribute('data-motion') === 'paused';
+    document.body.setAttribute('data-motion', paused ? 'running' : 'paused');
+    motionBtn.setAttribute('aria-pressed', String(!paused));
+    motionBtn.textContent = paused ? '⏸ 暫停背景動態' : '▶ 恢復背景動態';
+  });
+  // 使用者系統層級要求減少動態時，預設就停住
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.body.setAttribute('data-motion', 'paused');
+    motionBtn.setAttribute('aria-pressed', 'true');
+    motionBtn.textContent = '▶ 恢復背景動態';
+  }
   document.getElementById('overviewBtn').addEventListener('click', () => setMode('overview'));
   let rT;
   window.addEventListener('resize', () => { fit(); clearTimeout(rT); rT = setTimeout(buildOverview, 140); });
@@ -374,24 +433,29 @@
     setTimeout(() => window.focus(), 100);
   });
 
-  window.addEventListener('beforeprint', () => { printStack.innerHTML = ''; deck.forEach(item => { const f = document.createElement('iframe'); f.src = item.file; printStack.appendChild(f); }); printStack.style.display = 'block'; stage.style.display = 'none'; });
+  window.addEventListener('beforeprint', () => { printStack.innerHTML = ''; deck.forEach((item, i) => { const f = document.createElement('iframe'); f.src = item.file; f.title = (i + 1) + (item.label ? ' · ' + item.label : ''); printStack.appendChild(f); }); printStack.style.display = 'block'; stage.style.display = 'none'; });
   window.addEventListener('afterprint', () => { printStack.innerHTML = ''; printStack.style.display = 'none'; stage.style.display = ''; });
 
   const THEME_KEY = 'ai-fluency-theme';
-  function themeNow() {
+  // 回傳使用者明確選過的主題；沒選過回 null（≠ 預設 dark）
+  function storedTheme() {
     try {
       const v = localStorage.getItem(THEME_KEY);
       if (v === 'light' || v === 'dark') return v;
     } catch (_) {}
-    return 'dark';
+    return null;
   }
+  // file:// 開啟時 location.origin 是字串 "null"，postMessage 無法用它當目標
+  const MSG_ORIGIN = (location.origin && location.origin !== 'null') ? location.origin : '*';
   function pushTheme(theme) {
-    const t = theme || themeNow();
+    const t = theme || storedTheme();
+    if (!t) return;   // 未選過 → 放手讓每頁用自己的 data-theme-default
     document.querySelectorAll('iframe').forEach((f) => {
-      try { f.contentWindow.postMessage({ type: 'ai-fluency-theme', theme: t }, '*'); } catch (_) {}
+      try { f.contentWindow.postMessage({ type: 'ai-fluency-theme', theme: t }, MSG_ORIGIN); } catch (_) {}
     });
   }
   window.addEventListener('message', (e) => {
+    if (MSG_ORIGIN !== '*' && e.origin !== MSG_ORIGIN) return;
     if (!e.data || e.data.type !== 'ai-fluency-theme') return;
     if (e.data.theme !== 'light' && e.data.theme !== 'dark') return;
     try { localStorage.setItem(THEME_KEY, e.data.theme); } catch (_) {}
@@ -399,7 +463,7 @@
   });
   frame.addEventListener('load', () => pushTheme());
   document.getElementById('themeBtn').addEventListener('click', () => {
-    const next = themeNow() === 'dark' ? 'light' : 'dark';
+    const next = (storedTheme() || 'light') === 'dark' ? 'light' : 'dark';
     try { localStorage.setItem(THEME_KEY, next); } catch (_) {}
     pushTheme(next);
   });

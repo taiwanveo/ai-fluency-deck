@@ -26,7 +26,7 @@ body.slide {
   margin-left: 12px;
   padding: 3px 10px;
   border: 1px solid var(--line);
-  font-size: 13px;
+  font-size: 15px;
   letter-spacing: 0.08em;
   color: var(--accent);
   text-transform: uppercase;
@@ -35,10 +35,11 @@ body.slide {
 
 .intro h1 {
   font-family: Fraunces, "Noto Serif TC", serif;
-  font-size: 64px;
+  text-wrap: balance;
+  font-size: 76px;
   font-weight: 400;
   letter-spacing: -0.03em;
-  line-height: 1.02;
+  line-height: 1.14;
 }
 
 .intro h1 span,
@@ -50,7 +51,7 @@ body.slide {
 .intro p {
   margin-top: 12px;
   max-width: 1180px;
-  font-size: 26px;
+  font-size: 30px;
   line-height: 1.45;
   color: var(--muted);
 }
@@ -73,19 +74,28 @@ body.slide {
 .bays.n2 { grid-template-columns: 1fr 1fr; }
 .bays.n3 { grid-template-columns: 1fr 1fr 1fr; }
 .bays.n4 { grid-template-columns: repeat(4, 1fr); }
+.bays.n5 { grid-template-columns: repeat(5, 1fr); }
+
+/* 5 欄時每欄淨寬只剩約 330px，收窄留白換回行長 */
+.bays.n5 .bay { padding: 24px 20px 20px; }
+.bays.n5 .mark { font-size: 44px; }
+.bays.n5 .en { font-size: 30px; }
+.bays.n5 .blurb { font-size: 24px; }
 
 .bay {
   padding: 26px 28px 22px;
   display: flex;
   flex-direction: column;
   min-height: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .bay + .bay { border-left: 1px solid var(--line); }
 
 .mark {
   font-family: Fraunces, serif;
-  font-size: 48px;
+  font-size: 52px;
   line-height: 1;
   color: var(--accent);
   font-style: italic;
@@ -94,21 +104,21 @@ body.slide {
 .en {
   margin-top: 8px;
   font-family: Fraunces, serif;
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 500;
   letter-spacing: -0.02em;
 }
 
 .zh {
   margin-top: 4px;
-  font-size: 20px;
+  font-size: 24px;
   color: var(--studio);
   letter-spacing: 0.12em;
 }
 
 .blurb {
   margin-top: 16px;
-  font-size: 23px;
+  font-size: 28px;
   line-height: 1.5;
   color: var(--ink);
 }
@@ -117,7 +127,7 @@ body.slide {
   margin-top: auto;
   padding-top: 16px;
   border-top: 1px solid var(--line);
-  font-size: 20px;
+  font-size: 24px;
   line-height: 1.45;
   color: var(--muted);
 }
@@ -128,7 +138,7 @@ body.slide {
   color: var(--accent);
   font-weight: 500;
   letter-spacing: 0.08em;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 .rows {
@@ -145,19 +155,22 @@ body.slide {
   align-items: center;
   padding: 0 8px;
   border-bottom: 1px solid var(--line);
+  min-width: 0;
 }
 
+.row > * { min-width: 0; overflow-wrap: anywhere; }
+
 .row .label .en {
-  font-size: 28px;
+  font-size: 32px;
   margin-top: 0;
 }
 
 .row .label .zh {
-  font-size: 18px;
+  font-size: 22px;
 }
 
 .cap, .lim {
-  font-size: 22px;
+  font-size: 28px;
   line-height: 1.4;
 }
 
@@ -167,7 +180,7 @@ body.slide {
 .cap::before,
 .lim::before {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   margin-bottom: 6px;
@@ -189,6 +202,7 @@ body.slide {
   padding: 28px 32px;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .pane + .pane { border-left: 1px solid var(--line); }
@@ -198,16 +212,17 @@ body.slide {
 
 .pane h2 {
   font-family: Fraunces, serif;
-  font-size: 28px;
+  font-size: 34px;
   font-weight: 500;
   margin-bottom: 16px;
 }
 
 .pane pre,
 .pane .prompt {
-  font-size: 22px;
+  font-size: 28px;
   line-height: 1.55;
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
   font-family: "Noto Sans TC", sans-serif;
 }
 
@@ -219,6 +234,8 @@ body.slide {
 }
 
 .step {
+  min-width: 0;
+  overflow-wrap: anywhere;
   padding: 28px 26px;
   border-right: 1px solid var(--line);
   display: flex;
@@ -230,7 +247,7 @@ body.slide {
 .num {
   font-family: Fraunces, serif;
   font-style: italic;
-  font-size: 40px;
+  font-size: 44px;
   color: var(--accent);
 }
 
@@ -243,6 +260,8 @@ body.slide {
 }
 
 .item {
+  min-width: 0;
+  overflow-wrap: anywhere;
   padding: 22px 28px;
   border-bottom: 1px solid var(--line);
   border-right: 1px solid var(--line);
@@ -250,15 +269,15 @@ body.slide {
 
 .item:nth-child(2n) { border-right: 0; }
 
-.item h3 {
+.item h2 {
   font-family: Fraunces, serif;
-  font-size: 26px;
+  font-size: 32px;
   font-weight: 500;
   margin-bottom: 8px;
 }
 
 .item p {
-  font-size: 22px;
+  font-size: 28px;
   line-height: 1.45;
   color: var(--muted);
 }
@@ -268,7 +287,7 @@ body.slide {
   gap: 28px;
   align-items: center;
   color: var(--muted);
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .ribbon b { color: var(--ink); font-weight: 500; }
@@ -276,7 +295,7 @@ body.slide {
 
 .quote {
   font-family: Fraunces, "Noto Serif TC", serif;
-  font-size: 40px;
+  font-size: 46px;
   font-weight: 400;
   line-height: 1.35;
   max-width: 1500px;
@@ -284,6 +303,6 @@ body.slide {
 
 .cite {
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 24px;
   color: var(--muted);
 }
