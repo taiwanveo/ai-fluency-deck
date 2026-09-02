@@ -29,4 +29,4 @@ Delegation 委派 · Description 描述 · Discernment 辨別 · Diligence 審�
 
 ## 封面占位
 
-講師姓名、單位可直接改 `slides/01-cover.html`。日期為 2026.09.02，與 `slides/01-cover.html` 同步。
+講師姓名、單位可直接改 `slides/01-cover.html`。日期為 2026.09.03，與 `slides/01-cover.html` 同步。
